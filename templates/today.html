@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today Expense</title>
+    <style>
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .item {
+            padding: 10px;
+            border: 1px solid #ccc;
+            flex: 1;
+            margin-right: 10px;
+        }
+        .item:last-child {
+            margin-right: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="number"], input[type="date"] {
+            width: 100%;
+            padding: 8px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-5">
+                <h3 class="mt-5">Today Expense</h3>
+                <div class="card shadow mb-2 bg-white rounded-pill">
+                    <div class="card-body ">
+                        <div class="row">
+                            <label for="expenseName">Time:</label>
+                        <input type="text" id="time" name="Time" required>
+                        <label for="expenseName">Amount:</label>
+                        <input type="text" id="amount" name="amount" required>
+                        </div>
+        </div>
+        <section>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="mt-5">Expense Breakdown BY Category</h3>
+                    <form id="expenseForm">
+                        <label for="expenseName">Expense Name:</label>
+                        <input type="text" id="expenseName" name="expenseName" required>
+                        
+                        <label for="expenseAmount">Expense Amount:</label>
+                        <input type="number" id="expenseAmount" name="expenseAmount" min="0" required>
+                        
+                        <button type="submit">Add Expense</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                 <canvas id="myChart" width="400" height="400"></canvas>
+                 <script>
+                    const expenseForm = document.getElementById('expenseForm');
+                    const expenseList = document.getElementById('expenseList');
+            
+                    expenseForm.addEventListener('submit', function(event) {
+                        event.preventDefault();
+            
+                        const expenseName = document.getElementById('expenseName').value;
+                        const expenseAmount = document.getElementById('expenseAmount').value;
+                        const expenseDate = document.getElementById('expenseDate').value;
+            
+                        const expenseItem = document.createElement('li');
+                        expenseItem.innerHTML = `${expenseName} - $${expenseAmount} - ${expenseDate}`;
+                        
+                        expenseList.appendChild(expenseItem);
+                        expenseForm.reset();
+                    });
+                </script>
+                </div>
+            </div>
+         </div>
+        
+        
+        
+        </section>
+        
+        
+        </div>
+        
+</body>
+</html>
